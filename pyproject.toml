@@ -1,3 +1,18 @@
+[tool.poetry]
+name = "mergemate"
+version = "0.1.0"
+description = "AI-powered code review assistant"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "mergemate", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+pytest = "*"
+
 [tool.ruff]
 src = ["src"]
 target-version = "py313"
@@ -9,3 +24,7 @@ known-first-party = ["mergemate"]
 
 [tool.ruff.format]
 quote-style = "double"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
