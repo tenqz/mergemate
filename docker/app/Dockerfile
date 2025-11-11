@@ -8,14 +8,14 @@ ENV POETRY_VIRTUALENVS_CREATE=false \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="/root/.local/bin:$PATH"
+    ca-certificates \
+ && update-ca-certificates \
+ && pip install poetry \
+ && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY pyproject.toml README.md ./
+COPY pyproject.toml poetry.lock README.md ./
 RUN poetry install --with dev --no-root
 
 COPY src ./src

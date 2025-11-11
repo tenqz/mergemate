@@ -1,0 +1,9 @@
+services:
+  mergemate:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+
