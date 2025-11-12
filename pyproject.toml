@@ -1,10 +1,30 @@
 [tool.poetry]
 name = "mergemate"
 version = "0.1.0"
-description = "AI-powered code review assistant"
-authors = ["Your Name <you@example.com>"]
+description = "AI-powered assistant that automates code reviews and makes merging faster and more reliable."
+authors = ["Oleg Patsay <smmartbiz@gmail.com>"]
+license = "MIT"
 readme = "README.md"
 packages = [{ include = "mergemate", from = "src" }]
+keywords = ["ai", "code-review", "merge", "automation", "developer-tools", "lint", "python"]
+homepage = "https://github.com/tenqz/mergemate"
+repository = "https://github.com/tenqz/mergemate"
+documentation = "https://github.com/tenqz/mergemate#readme"
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Quality Assurance",
+  "Topic :: Software Development :: Version Control :: Git",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
+
+[tool.poetry.urls]
+Author = "https://opatsay.com"
+Issues = "https://github.com/tenqz/mergemate/issues"
 
 [tool.poetry.dependencies]
 python = "^3.13"
@@ -19,13 +39,27 @@ interrogate = "*"
 src = ["src"]
 target-version = "py313"
 line-length = 100
-lint.select = ["E", "F", "B", "I"]
+lint.select = ["E", "F", "B", "I", "D"]
+lint.ignore = ["D100", "D104"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["mergemate"]
 
 [tool.ruff.format]
 quote-style = "double"
+
+[tool.pydocstyle]
+convention = "google"
+add-ignore = ["D100", "D104"]
+match = "(?!test_).*\\.py"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-private = true
+ignore-semiprivate = true
+fail-under = 90
+exclude = ["tests", "venv"]
+verbose = 2
 
 [build-system]
 requires = ["poetry-core"]
