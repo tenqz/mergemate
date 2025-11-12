@@ -1,0 +1,50 @@
+name: Docs Build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build-docs:
+    name: Generate Docs & Badge
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install interrogate pdoc
+
+      - name: Generate documentation coverage badge
+        run: |
+          mkdir -p badges
+          interrogate --config pyproject.toml --fail-under 0 --generate-badge badges/doc_coverage.svg src
+
+      - name: Build HTML documentation
+        run: |
+          mkdir -p build
+          pdoc --html src/mergemate --output-dir build --force
+          rm -rf docs
+          mv build/mergemate docs
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          keep_files: true
+          destination_dir: .
+          full_commit_message: "Update docs and coverage badge"
