@@ -12,6 +12,7 @@ python = "^3.13"
 [tool.poetry.group.dev.dependencies]
 ruff = "*"
 pytest = "*"
+pydocstyle = "*"
 
 [tool.ruff]
 src = ["src"]
