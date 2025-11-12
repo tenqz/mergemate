@@ -13,6 +13,7 @@ python = "^3.13"
 ruff = "*"
 pytest = "*"
 pydocstyle = "*"
+interrogate = "*"
 
 [tool.ruff]
 src = ["src"]
