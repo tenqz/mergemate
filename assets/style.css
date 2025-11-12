@@ -1,8 +1,61 @@
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #0d1117;
-  color: #c9d1d9;
+:root {
+  --bg-color: #0d1117;
+  --sidebar-bg: #161b22;
+  --text-color: #c9d1d9;
+  --accent: #3b82f6;
+  --border-color: #30363d;
+  --link-hover: #60a5fa;
 }
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+nav {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+}
+
+nav a {
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--link-hover);
+}
+
+code, pre {
+  background: #161b22;
+  color: #a5d6ff;
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+}
+
+h1, h2, h3 {
+  color: #f0f6fc;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.2em;
+}
+
 a {
-  color: #58a6ff;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+#logo img {
+  filter: drop-shadow(0 0 3px rgba(59, 130, 246, 0.5));
+}
+
+footer {
+  background: var(--sidebar-bg);
+  color: #8b949e;
+  border-top: 1px solid var(--border-color);
 }
