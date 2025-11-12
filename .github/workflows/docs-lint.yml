@@ -24,4 +24,4 @@ jobs:
           pip install pydocstyle
 
       - name: Run pydocstyle
-        run: pydocstyle src
+        run: pydocstyle src tests

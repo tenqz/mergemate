@@ -31,7 +31,7 @@ jobs:
       - name: Generate documentation coverage badge
         run: |
           mkdir -p badges
-          interrogate --config pyproject.toml --fail-under 0 --generate-badge badges/doc_coverage.svg src
+          interrogate --config pyproject.toml --fail-under 0 --generate-badge badges/doc_coverage.svg src tests
 
       - name: Copy assets
         run: |
