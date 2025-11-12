@@ -34,10 +34,7 @@ jobs:
 
       - name: Build HTML documentation
         run: |
-          mkdir -p build
-          pdoc --html src/mergemate --output-dir build --force
-          rm -rf docs
-          mv build/mergemate docs
+          pdoc src/mergemate -o docs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -47,4 +44,4 @@ jobs:
           publish_dir: .
           keep_files: true
           destination_dir: .
-          full_commit_message: "Update docs and coverage badge"
+          full_commit_message: "docs: update docs and coverage badge"
