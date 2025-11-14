@@ -7,7 +7,7 @@ It handles argument parsing and emits domain events.
 import sys
 
 from mentra.cli.application.interfaces.cli_interface import CLIInterface
-from mentra.cli.infrastructure.event_store import CLIEventStore
+from mentra.cli.infrastructure.cli_event_store import CLIEventStore
 
 
 class CLIApp(CLIInterface):
